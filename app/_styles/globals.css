@@ -1,0 +1,185 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #e1e8ef;
+  --color-primary-100: #d4dee7;
+  --color-primary-200: #b7c7d7;
+  --color-primary-300: #99b0c7;
+  --color-primary-400: #7c99b6;
+  --color-primary-500: #5e82a6;
+  --color-primary-600: #4c6b8a;
+  --color-primary-700: #3c546c;
+  --color-primary-800: #2c3d4f;
+  --color-primary-900: #1b2631;
+  --color-primary-950: #141c24;
+
+  --color-accent-50: #faf5f0;
+  --color-accent-100: #f4ece1;
+  --color-accent-200: #e8d6bf;
+  --color-accent-300: #ddc2a2;
+  --color-accent-400: #d2af84;
+  --color-accent-500: #c69963;
+  --color-accent-600: #b78343;
+  --color-accent-700: #926835;
+  --color-accent-800: #6c4d28;
+  --color-accent-900: #4b351b;
+  --color-accent-950: #382814;
+}
+@layer components {
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid theme("colors.primary.900");
+    border-right-color: theme("colors.primary.200");
+    animation: rotate 1s infinite linear;
+  }
+
+  .spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid theme("colors.primary.200");
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}
+
+/* For data picker */
+.rdp {
+  --rdp-cell-size: 32px !important;
+  --rdp-accent-color: theme("colors.accent.500") !important;
+  --rdp-background-color: theme("colors.accent.600") !important;
+  margin: 0 !important;
+}
+
+/* nền tổng */
+.rdp-custom {
+  background-color: transparent;
+  color: white;
+}
+
+/* header tháng */
+.rdp-custom .rdp-caption {
+  color: white;
+  font-weight: 600;
+}
+
+/* weekday (Su Mo Tu...) */
+.rdp-custom .rdp-head_cell {
+  color: #94a3b8;
+}
+
+/* ngày thường */
+.rdp-custom .rdp-day {
+  color: white;
+  border-radius: 10px;
+}
+
+/* hover */
+.rdp-custom .rdp-day:hover {
+  background-color: #c69963;
+}
+
+/* ngày được chọn */
+.rdp-custom .rdp-day_selected {
+  background-color: #c69963 !important;
+  color: white !important;
+}
+
+/* range giữa */
+.rdp-custom .rdp-range_middle {
+  background-color: #c69963 !important;
+  color: #0f172a;
+}
+
+/* ngày bắt đầu */
+.rdp-custom .rdp-day_range_start {
+  background-color: #2563eb;
+  color: white;
+  border-radius: 10px 0 0 10px;
+}
+
+/* ngày kết thúc */
+.rdp-custom .rdp-day_range_end {
+  background-color: #2563eb;
+  color: white;
+  border-radius: 0 10px 10px 0;
+}
+
+/* ngày disabled */
+.rdp-custom .rdp-day_disabled {
+  color: #64748b;
+  opacity: 0.4;
+}
+
+.rdp-custom .rdp-selected {
+  background: #0000ff;
+}
+
+textarea,
+select {
+  background: white !important;
+}
+
+/* --- HIỆU ỨNG TRƯỢT TỪ DƯỚI LÊN --- */
+@keyframes slideUpEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(40px); /* Bắt đầu từ dưới 40px */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Trở về vị trí ban đầu */
+  }
+}
+
+.animate-slide-up {
+  opacity: 0; /* Ẩn ban đầu để không bị chớp */
+  /* forwards giúp giữ nguyên trạng thái ở 100% sau khi chạy xong */
+  animation: slideUpEnter 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+/* --- HIỆU ỨNG TRƯỢT TỪ TRÁI SANG --- */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.8s cubic-bezier(0.2, 1.2, 0.2, 1) forwards;
+}
+
+/* --- HIỆU ỨNG TRƯỢT TỪ PHẢI SANG --- */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  opacity: 0;
+  animation: slideInRight 0.8s cubic-bezier(0.2, 1.2, 0.2, 1) forwards;
+}
